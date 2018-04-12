@@ -1,11 +1,11 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.2.30"
-    id "org.jetbrains.kotlin.plugin.jpa" version "1.2.30"
-    id "org.jetbrains.kotlin.plugin.spring" version "1.2.30"
-    id "org.jetbrains.kotlin.plugin.allopen" version "1.2.30"
+    id "org.jetbrains.kotlin.jvm" version "1.2.31"
+    id "org.jetbrains.kotlin.plugin.jpa" version "1.2.31"
+    id "org.jetbrains.kotlin.plugin.spring" version "1.2.31"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.2.31"
     id "com.diffplug.gradle.spotless" version "3.10.0"
     id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-3"
-    id "org.springframework.boot" version "2.0.0.RELEASE"
+    id "org.springframework.boot" version "2.0.1.RELEASE"
     id "com.gorylenko.gradle-git-properties" version "1.4.21"
     id "org.flywaydb.flyway" version "5.0.7"
 }
@@ -19,11 +19,22 @@ repositories {
     jcenter()
 }
 
+if (JavaVersion.current() == JavaVersion.VERSION_1_10) {
+    sourceCompatibility = 1.10
+    targetCompatibility = 1.10
+} else if (JavaVersion.current() == JavaVersion.VERSION_1_9) {
+    sourceCompatibility = 1.9
+    targetCompatibility = 1.9
+} else  {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-webflux:2.0.0.RELEASE"
-    compile "org.springframework.boot:spring-boot-starter-actuator:2.0.0.RELEASE"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa:2.0.0.RELEASE"
-    compile "org.springframework.boot:spring-boot-starter-data-rest:2.0.0.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-webflux:2.0.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-actuator:2.0.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:2.0.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-data-rest:2.0.1.RELEASE"
     compile "io.prometheus:simpleclient_hotspot:0.3.0"
     compile 'io.micrometer:micrometer-registry-prometheus:1.0.1'
     compile "org.flywaydb:flyway-core:5.0.7"

@@ -22,10 +22,8 @@ repositories {
 if (JavaVersion.current() == JavaVersion.VERSION_1_10) {
     sourceCompatibility = 1.10
     targetCompatibility = 1.10
-} else if (JavaVersion.current() == JavaVersion.VERSION_1_9) {
-    sourceCompatibility = 1.9
-    targetCompatibility = 1.9
-} else  {
+} 
+else  {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 }
